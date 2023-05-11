@@ -1,0 +1,33 @@
+{
+  "name": "awesome-app-2023a",
+  "version": "1.0.0",
+  "description": "App for learning ExpressJs",
+  "main": "app.js",
+  "type": "module",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JoshBarajas21/Awesome-app-2023a.git"
+  },
+  "engines": {
+    "node": "20.0.0",
+    "npm": "9.6.4"
+  },
+  "keywords": [
+    "Express",
+    "ITGAM",
+    "DWPCI",
+    "JavaScript"
+  ],
+  "author": "@JoshBarajas21",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/JoshBarajas21/Awesome-app-2023a/issues"
+  },
+  "homepage": "https://github.com/JoshBarajas21/Awesome-app-2023a#readme",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
