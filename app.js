@@ -4,7 +4,7 @@
 //import http from 'http';
 
 // importando expressjs
-import express from 'express';
+import express, { response } from 'express';
 
 // Crear una instancia de express
 const app = express();  // (req, res) => { UN MONTON DE CÓDIGO }
@@ -22,16 +22,27 @@ const app = express();  // (req, res) => { UN MONTON DE CÓDIGO }
     next();
  }); */
 
+ // Middlware de propósitos específicos
+
+// Middlware Globales después de los que tienen un path
  app.use( (req, res, next)=>{
     console.log("🏁 Registrando Petición");
     next();
  });
 
 
-
  app.use( (req, res, next)=>{
     console.log(`${req.method} - ${req.url}`);
     next();
+ });
+
+ //Probando que pasa si el about está por debajo de los middlware genéricos
+ app.use('/about', (req, res) => {
+   res.send(`
+      <h1 style="color: teal"> About... </h1>
+      <p style="color: #555"> Esto es una página creada para aprender 
+      desarrollo web en Full Stack con <u><b>JS</b></u> </p>
+   `)
  });
 
  app.use( (req, res)=>{
