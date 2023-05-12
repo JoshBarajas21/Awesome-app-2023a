@@ -1,5 +1,7 @@
+// #Express ya tiene un método listen, así que puedo evitar importar la dependencia de http
+
 // importar modulo de http
-import http from 'http';
+//import http from 'http';
 
 // importando expressjs
 import express from 'express';
@@ -37,12 +39,12 @@ const app = express();  // (req, res) => { UN MONTON DE CÓDIGO }
     //el método send, permite responder html
     res.send(`
         <h1> Welcome to Express </h1>
-        <p> This is mu awesome app </p>
+        <p> This is my awesome app 😋</p>
     `);
  });
 
 //Creando servidor
-const server = http.createServer(app); //funge como código de backend (antes eramos responsables de hacelor, ahora
+//const server = http.createServer(app); //funge como código de backend (antes eramos responsables de hacelor, ahora
 // es express es quien nos provee de una lógica inicial)
 
 //Definir puertos
@@ -52,7 +54,7 @@ const ip = "0.0.0.0"; //en git gub
 
 //Arrancando el server
 
-server.listen(port, ip, (err) => { //el callback puede recibir un argumento de error, si hay algún error
+app.listen(port, ip, (err) => { //el callback puede recibir un argumento de error, si hay algún error
     console.log("Still a Live!!! 📣😋 on http://localhost:3000");//maquina local
     console.log(`Still a Live!!! 📣😋 on https://${process.env.IP}:${process.env.PORT}`); //experimento de GIT
 });
