@@ -9,6 +9,10 @@ import express, { response } from 'express';
 // Crear una instancia de express
 const app = express();  // (req, res) => { UN MONTON DE CÓDIGO }
 
+// Middlware de parseo de datos del cliente
+// app.use(express.urlencoded())
+app.use(express.urlencoded( {extended: true} ))
+
 // Registrando nuestro primer middlware
 //este método nos permite registrar un nuevo middlware
 //el parámetro next, no se pone si tu eres el último en contestar
@@ -45,6 +49,35 @@ const app = express();  // (req, res) => { UN MONTON DE CÓDIGO }
    `)
  });
 
+//  Get add-product
+ app.use('/add-product', (req, res, next) => {
+   if(req.method === "POST") return next();
+
+   // sirviendo el formulario
+   console.log("📣´Sirviendo el formulario");
+   res.send(`
+      <form action="/add-product" method="POST">
+         <label for="name"> Tittle </label>
+         <input type="text" placeholder="Product Name" name="title">
+         <label for="description"> Descripción </label>
+         <input type="text" placeholder="Product Description" name="description">
+         <button type="submit" > Add Product </button>
+      </form>
+   `)
+ });
+
+//  Middlware que sea detonado por un método POST en la ruta /add-product
+ app.use('/add-product', (req, res) => {
+   // Realizando extracción de los 
+   // datos en la petición (req)
+   for(const prop in req.body){
+      // console.log(`PROP: ${prop}`)
+      console.log(`${prop}: ${req.body[prop]}`)
+   }
+   // Redireccionamiento
+   res.redirect('/')
+ });
+
  app.use( (req, res)=>{
     console.log("⭐ Responses to client");
     //el método send, permite responder html
@@ -67,5 +100,5 @@ const ip = "0.0.0.0"; //en git gub
 
 app.listen(port, ip, (err) => { //el callback puede recibir un argumento de error, si hay algún error
     console.log("Still a Live!!! 📣😋 on http://localhost:3000");//maquina local
-    console.log(`Still a Live!!! 📣😋 on https://${process.env.IP}:${process.env.PORT}`); //experimento de GIT
+   //  console.log(`Still a Live!!! 📣😋 on https://${process.env.IP}:${process.env.PORT}`); //experimento de GIT
 });
