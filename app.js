@@ -50,8 +50,9 @@ app.use(express.urlencoded( {extended: true} ))
  });
 
 //  Get add-product
- app.use('/add-product', (req, res, next) => {
-   if(req.method === "POST") return next();
+//  app.use('/add-product', (req, res, next) => {
+ app.get('/add-product', (req, res, next) => {
+   // if(req.method === "POST") return next();
 
    // sirviendo el formulario
    console.log("📣´Sirviendo el formulario");
@@ -67,7 +68,7 @@ app.use(express.urlencoded( {extended: true} ))
  });
 
 //  Middlware que sea detonado por un método POST en la ruta /add-product
- app.use('/add-product', (req, res) => {
+ app.post('/add-product', (req, res) => {
    // Realizando extracción de los 
    // datos en la petición (req)
    for(const prop in req.body){
