@@ -4,7 +4,7 @@
 //import http from 'http';
 
 // importando expressjs
-import express, { response } from 'express';
+import express from 'express';
 
 // Crear una instancia de express
 const app = express();  // (req, res) => { UN MONTON DE CÓDIGO }
@@ -18,7 +18,7 @@ app.use(express.urlencoded( {extended: true} ))
 //el parámetro next, no se pone si tu eres el último en contestar
 /* app.use( (req, res, next)=>{ 
     console.log("📣 Executing the Middlware 1");
-    // Invocadno al siguiente Middlware
+    // Invocando al siguiente Middlware
     next();                                             
  } ); 
  app.use( (req, res, next)=>{
@@ -41,7 +41,7 @@ app.use(express.urlencoded( {extended: true} ))
  });
 
  //Probando que pasa si el about está por debajo de los middlware genéricos
- app.use('/about', (req, res) => {
+app.use('/about', (req, res) => {
    res.send(`
       <h1 style="color: teal"> About... </h1>
       <p style="color: #555"> Esto es una página creada para aprender 
