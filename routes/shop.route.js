@@ -1,11 +1,14 @@
 // Importando el módulo Router
 import {Router} from 'express';
+import httpStatus from 'http-status';
 import path from 'path';
 
 // Creando la instancia de route
 const router = Router();
 
-router.use('/about', (req, res) => {
+
+
+router.get('/about', (req, res) => {
     console.log("📣 Sirviendo la Ruta '/' ")
     res.send(`
        <h1 style="color: teal"> About... </h1>
@@ -14,7 +17,8 @@ router.use('/about', (req, res) => {
     `)
 });
  
-router.use( '/', (req, res)=>{
+
+router.get( '/', (req, res)=>{
     console.log("📣 Sirviendo la Ruta '/' ")
     // el método send, permite responder html
     /* res.send(`
@@ -23,5 +27,10 @@ router.use( '/', (req, res)=>{
     `); */
     res.sendFile(path.resolve('views','shop.html'));
 });
+
+router.use( (req, res)=>{
+    console.log("📣 NOT FOUND ");
+    res.status(httpStatus.NOT_FOUND).sendFile(path.resolve('views', '404.html'))
+})
 
 export default router;
