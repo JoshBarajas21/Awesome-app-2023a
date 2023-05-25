@@ -10,11 +10,12 @@ const router = Router();
 
 router.get('/about', (req, res) => {
     console.log("📣 Sirviendo la Ruta '/' ")
-    res.send(`
+    /* res.send(`
        <h1 style="color: teal"> About... </h1>
        <p style="color: #555"> Esto es una página creada para aprender 
        desarrollo web en Full Stack con <u><b>JS</b></u> </p>
-    `)
+    `) */
+    res.sendFile(path.resolve('views', 'about.html'))
 });
  
 
@@ -28,6 +29,7 @@ router.get( '/', (req, res)=>{
     res.sendFile(path.resolve('views','shop.html'));
 });
 
+// Captando todas las direcciones y métodos con .use()
 router.use( (req, res)=>{
     console.log("📣 NOT FOUND ");
     res.status(httpStatus.NOT_FOUND).sendFile(path.resolve('views', '404.html'))

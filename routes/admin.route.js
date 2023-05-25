@@ -15,6 +15,7 @@ const router = Router();
 
 // Hora de hacer formulario de agregar producto
 
+// para entrar a este Middlware debe haber un /admin/add-product
 router.get('/add-product', (req, res, next) => {
     // Si la petición es POST; pasamos al sig
     //Middlware
@@ -35,6 +36,7 @@ router.get('/add-product', (req, res, next) => {
     res.sendFile(path.resolve('views','add-product.html'));
 });
 
+// para entrar a este otro Middlware debe haber un /admin/add-product y método post
 router.post('/add-product', (req, res) => {
     // Realizando extracción de los 
     // datos en la petición (req)

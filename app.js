@@ -18,7 +18,7 @@ app.use(express.urlencoded( {extended: true} ))
 // route es un Middlware válido y se puede importar así
 
 // Ruta de administrador
-app.use(adminRouter);
+app.use( '/admin' ,adminRouter);
 
 // Ruta shop
 app.use(shopRouter);
