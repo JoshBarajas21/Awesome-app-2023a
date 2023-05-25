@@ -3,7 +3,11 @@
 
 // Importando módulo Router de express
 import {Router} from 'express';
+// importando path
 import path from 'path';
+// importando ROOT_DIR
+import { ROOT_DIR } from '../helpers/paths.js';
+
 
 // Creando instancia del Router
 const router = Router();
@@ -19,7 +23,7 @@ const router = Router();
 router.get('/add-product', (req, res, next) => {
     // Si la petición es POST; pasamos al sig
     //Middlware
-    
+    console.log(`ROOT_DIR: ${ROOT_DIR}`)
     if(req.method === "POST") return next();
  
     // sirviendo el formulario
@@ -33,7 +37,9 @@ router.get('/add-product', (req, res, next) => {
           <button type="submit" > Add Product </button>
        </form>
     `) */
-    res.sendFile(path.resolve('views','add-product.html'));
+    // res.sendFile(path.resolve('views','add-product.html'));
+    // Utilizando el ROOT_DIR
+    res.sendFile(path.join(ROOT_DIR, 'views','add-product.html'));
 });
 
 // para entrar a este otro Middlware debe haber un /admin/add-product y método post

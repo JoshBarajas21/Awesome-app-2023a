@@ -19,7 +19,7 @@ app.use(express.urlencoded( {extended: true} ))
 
 // Ruta de administrador
 app.use( '/admin' ,adminRouter);
-
+                                                                  
 // Ruta shop
 app.use(shopRouter);
 
