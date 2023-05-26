@@ -1,19 +1,25 @@
 // #Express ya tiene un método listen, así que puedo evitar importar la dependencia de http
 // importando expressjs
 import express from 'express';
+import path from 'path';
 
-// Importando http-status
 import httpStatus from 'http-status';
 
 // Importando el enrutador
 import adminRouter from './routes/admin.route.js';
 import shopRouter from './routes/shop.route.js';
+import { ROOT_DIR } from './helpers/paths.js';
 
 // Crear una instancia de express
 const app = express();  // (req, res) => { UN MONTON DE CÓDIGO }
 
 // Middlware de parseo de datos del cliente
 app.use(express.urlencoded( {extended: true} ))
+
+// Se registra el Middlware para
+// Servidor de archivos estáticos 
+// middlware | métod static de express | ruta de los estáticos
+app.use( express.static(path.join(ROOT_DIR, 'public')) );
 
 // route es un Middlware válido y se puede importar así
 
