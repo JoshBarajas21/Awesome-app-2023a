@@ -6,6 +6,9 @@ import path from 'path';
 // Creando la instancia de route
 const router = Router();
 
+// Importando productos
+import {products} from './admin.route.js'
+
 
 
 router.get('/about', (req, res) => {
@@ -26,12 +29,13 @@ router.get( '/', (req, res)=>{
         <h1> 🪄 About... </h1>
         <p> App for Fullstack Web Dev Course I! 😋</p>
     `); */
+    console.log(products);
     res.sendFile(path.resolve('views','shop.html'));
 });
 
 // Captando todas las direcciones y métodos con .use()
 router.use( (req, res)=>{
-    console.log("📣 NOT FOUND ");
+    console.log(`📣 NOT FOUND ${req.url}`);
     res.status(httpStatus.NOT_FOUND).sendFile(path.resolve('views', '404.html'))
 })
 

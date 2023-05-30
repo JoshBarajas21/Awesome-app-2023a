@@ -12,6 +12,9 @@ import { ROOT_DIR } from '../helpers/paths.js';
 // Creando instancia del Router
 const router = Router();
 
+// Creando datos en la memoria volátil
+export const products = [];
+
 //La instancia de Router es una función Middlware
 // se pueden definir manejadores de ruta y aplicarlos
 // como middlware con use(), o con los métodos
@@ -47,6 +50,13 @@ router.post('/add-product', (req, res) => {
     // Realizando extracción de los 
     // datos en la petición (req)
     console.log(req.body);
+    // Realizaremos la desestructuración de
+    // "name" de la petición
+    const {title} = req.body;
+
+    // agregaremos el dato en la base de datos
+    products.push(title)
+
     // Redireccionamiento
     res.redirect('/')
 });
