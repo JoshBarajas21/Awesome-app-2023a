@@ -16,7 +16,7 @@ router.get('/about', (req, res) => {
     res.sendFile(path.resolve('views', 'about.html'))
 });
  
-
+/* 
 router.get( '/', (req, res)=>{
     console.log("📣 Sirviendo la Ruta '/' ")
     console.log(products);
@@ -25,6 +25,17 @@ router.get( '/', (req, res)=>{
     res.render('shop', {shop: 'active',
     docTitle: 'Shop',
     setIcon: '/images/bag-fill.svg'
+    });
+}); */
+
+router.get(["/", "/home"], (_, res) => {
+    console.log(`📕 Inventario de productos: ${JSON.stringify(products)}`);
+    console.log(`📒 Sirviendo recurso; 'shop.html'`);
+    res.render('shop', {shop: 'active',
+    docTitle: 'Shop',
+    setIcon: '/images/bag-fill.svg',
+    viewStyle: '/css/products.css',
+    products
     });
 });
 

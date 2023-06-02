@@ -28,7 +28,7 @@ router.get('/add-product', (req, res, next) => {
     // app.render(<vista>,<view model>)
     // res.render('add-product', {layout: false}); Sin plantilla maestra (menu)
     res.render('add-product', {addProduct: `active`,
-    viewStyle: '/css/product.css',
+    viewStyle: '/css/add-product.css',
     docTitle: 'Add Product',
     setIcon: '/images/cart-plus-fill.svg'
     });
