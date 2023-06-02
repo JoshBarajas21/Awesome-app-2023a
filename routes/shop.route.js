@@ -35,6 +35,7 @@ router.get(["/", "/home"], (_, res) => {
     docTitle: 'Shop',
     setIcon: '/images/bag-fill.svg',
     viewStyle: '/css/products.css',
+    isProductsListEmpty: products.length === 0,
     products
     });
 });
