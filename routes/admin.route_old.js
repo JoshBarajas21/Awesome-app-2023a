@@ -15,24 +15,36 @@ const router = Router();
 // Creando datos en la memoria volátil
 export const products = [];
 
+//La instancia de Router es una función Middlware
+// se pueden definir manejadores de ruta y aplicarlos
+// como middlware con use(), o con los métodos
+// get(), post(), put(), delete()
+
 // Hora de hacer formulario de agregar producto
 
 // para entrar a este Middlware debe haber un /admin/add-product
 router.get('/add-product', (req, res, next) => {
+    // Si la petición es POST; pasamos al sig
     //Middlware
     console.log(`ROOT_DIR: ${ROOT_DIR}`)
     if(req.method === "POST") return next();
  
     // sirviendo el formulario
     console.log("📣´Sirviendo el formulario");
+    /* res.send(`
+       <form action="/add-product" method="POST">
+          <label for="name"> Tittle </label>
+          <input type="text" placeholder="Product Name" name="title">
+          <label for="description"> Descripción </label>
+          <input type="text" placeholder="Product Description" name="description">
+          <button type="submit" > Add Product </button>
+       </form>
+    `) */
+    // res.sendFile(path.resolve('views','add-product.html'));
+    // Utilizando el ROOT_DIR
+    // res.sendFile(path.join(ROOT_DIR, 'views','add-product.html'));
     // app.render(<vista>,<view model>)
-    // res.render('add-product', {layout: false}); Sin plantilla maestra (menu)
-    res.render('add-product', {addProduct: `active`,
-    viewStyle: '/css/product.css',
-    docTitle: 'Add Product',
-    setIcon: '/images/cart-plus-fill.svg'
-    });
-    
+    res.render('add-product', {layout: false})
 });
 
 // para entrar a este otro Middlware debe haber un /admin/add-product y método post

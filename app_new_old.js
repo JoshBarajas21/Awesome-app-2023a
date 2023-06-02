@@ -44,12 +44,21 @@ app.use(express.urlencoded( {extended: true} ))
 // middlware | métod static de express | ruta de los estáticos
 app.use( express.static(path.join(ROOT_DIR, 'public')) );
 
+// route es un Middlware válido y se puede importar así
 
 // Ruta de administrador
 app.use( '/admin' ,adminRouter);
                                                                   
 // Ruta shop
 app.use(shopRouter);
+
+/* app.use((req, res) => {
+    res.status(httpStatus.NOT_FOUND).send(`
+    <h1 style="color: crimson; text-align=center; font-sixe: 400%; margin: 3em 0 0 0"> 
+    🤷🏻‍♂️ NOT RESOURCE FOUND 🤷🏻‍♂️ 
+    </h1>
+    `)
+}); */
 
 //Creando servidor
 
