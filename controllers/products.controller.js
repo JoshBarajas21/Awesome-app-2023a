@@ -46,7 +46,7 @@ export const getProducts = (req , res) => {
 }
 
 export const aboutPage = (req, res) => {
-    console.log("📣 Sirviendo la Ruta '/' ")
+    console.log("📣 Sirviendo la Ruta '/about' ")
     res.render('about', {about: 'active',
     docTitle: 'Shop | About',
     setIcon: '/images/find.png'
